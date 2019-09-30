@@ -4,6 +4,7 @@ import { Card, Button, SearchBar } from 'react-native-elements'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 import fetchSearch from '../services/fetchSearch'
+import currency from '../services/currencyFormatter'
 
 export default class Home extends React.Component {
   constructor(props){
@@ -64,15 +65,17 @@ export default class Home extends React.Component {
             productName = item.Name,
             productImage = item.Skus[0].Images[0].ImageUrl,
             productDescription = item.Skus[0].ComplementName,
-            productCount = item.Skus[0].Sellers[0].BestInstallment.Count
-
+            productCount = item.Skus[0].Sellers[0].BestInstallment.Count,
+            productPrice = currency.format(item.Skus[0].Sellers[0].Price, { code: 'BRL' }),
+            productValue = currency.format(item.Skus[0].Sellers[0].BestInstallment.Value, { code: 'BRL' })
+            
             return(          
             <Card                                         
               title={productName}           
               image={{uri: productImage}}              
             >
             <Text style={styles.description}>{productDescription}</Text> 
-            <Text style={styles.price}>{item.Skus[0].Sellers[0].Price} ou em até {productCount} vezes de {item.Skus[0].Sellers[0].BestInstallment.Value}</Text>             
+            <Text style={styles.price}>{productPrice} ou em até {productCount} vezes de {productValue}</Text>             
             <Button              
               buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
               title='Comprar' />
