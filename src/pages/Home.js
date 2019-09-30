@@ -66,9 +66,10 @@ export default class Home extends React.Component {
             productImage = item.Skus[0].Images[0].ImageUrl,
             productDescription = item.Skus[0].ComplementName,
             productCount = item.Skus[0].Sellers[0].BestInstallment.Count,
+            //conversão do valor float para BRL
             productPrice = currency.format(item.Skus[0].Sellers[0].Price, { code: 'BRL' }),
             productValue = currency.format(item.Skus[0].Sellers[0].BestInstallment.Value, { code: 'BRL' })
-            
+
             return(          
             <Card                                         
               title={productName}           
