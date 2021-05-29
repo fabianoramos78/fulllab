@@ -16,7 +16,7 @@
     "react-native-elements": "^1.2.3",
     "react-native-intl": "^1.0.0",
     "react-native-vector-icons": "^6.6.0",
-    "ws": "^7.1.2"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
